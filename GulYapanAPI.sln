@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{621AD677-9809-4A38-B7A0-D7D6421D6A46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GulYapan.API.Domain", "Core\GulYapan.API.Domain\GulYapan.API.Domain.csproj", "{85DBEBE5-8E40-4482-A623-91D0969FB98D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GulYapanAPI.Application", "Core\GulYapanAPI.Application\GulYapanAPI.Application.csproj", "{0BC12DF4-8958-4860-A073-9F3C695020B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{49CAAF97-AEE2-44F6-9075-7C0BCB7DC92A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GulYapanAPI.Infrastructure", "Infrastructure\GulYapanAPI.Infrastructure\GulYapanAPI.Infrastructure.csproj", "{DD8790F2-39DC-4D67-BE8A-ABE45F7C92E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GulYapanAPI.Persistence", "Infrastructure\GulYapanAPI.Persistence\GulYapanAPI.Persistence.csproj", "{EB34523E-D88E-4DFA-BD25-B763AE0200D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{EDF5472A-EB94-4DC6-81AF-2BBD48771387}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GulYapanAPI.API", "Presentation\GulYapanAPI.API\GulYapanAPI.API.csproj", "{42B3A1DE-6365-4381-A951-475D00A85E0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85DBEBE5-8E40-4482-A623-91D0969FB98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85DBEBE5-8E40-4482-A623-91D0969FB98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85DBEBE5-8E40-4482-A623-91D0969FB98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85DBEBE5-8E40-4482-A623-91D0969FB98D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BC12DF4-8958-4860-A073-9F3C695020B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BC12DF4-8958-4860-A073-9F3C695020B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BC12DF4-8958-4860-A073-9F3C695020B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BC12DF4-8958-4860-A073-9F3C695020B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8790F2-39DC-4D67-BE8A-ABE45F7C92E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8790F2-39DC-4D67-BE8A-ABE45F7C92E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8790F2-39DC-4D67-BE8A-ABE45F7C92E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8790F2-39DC-4D67-BE8A-ABE45F7C92E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB34523E-D88E-4DFA-BD25-B763AE0200D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB34523E-D88E-4DFA-BD25-B763AE0200D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB34523E-D88E-4DFA-BD25-B763AE0200D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB34523E-D88E-4DFA-BD25-B763AE0200D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B3A1DE-6365-4381-A951-475D00A85E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B3A1DE-6365-4381-A951-475D00A85E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B3A1DE-6365-4381-A951-475D00A85E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B3A1DE-6365-4381-A951-475D00A85E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85DBEBE5-8E40-4482-A623-91D0969FB98D} = {621AD677-9809-4A38-B7A0-D7D6421D6A46}
+		{0BC12DF4-8958-4860-A073-9F3C695020B7} = {621AD677-9809-4A38-B7A0-D7D6421D6A46}
+		{DD8790F2-39DC-4D67-BE8A-ABE45F7C92E9} = {49CAAF97-AEE2-44F6-9075-7C0BCB7DC92A}
+		{EB34523E-D88E-4DFA-BD25-B763AE0200D4} = {49CAAF97-AEE2-44F6-9075-7C0BCB7DC92A}
+		{42B3A1DE-6365-4381-A951-475D00A85E0A} = {EDF5472A-EB94-4DC6-81AF-2BBD48771387}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AFC71A5-8656-4196-BEB3-4CDB6A680CA3}
+	EndGlobalSection
+EndGlobal

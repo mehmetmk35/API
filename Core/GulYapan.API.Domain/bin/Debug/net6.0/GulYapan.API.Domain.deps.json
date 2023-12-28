@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "GulYapan.API.Domain/1.0.0": {
+        "runtime": {
+          "GulYapan.API.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GulYapan.API.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
