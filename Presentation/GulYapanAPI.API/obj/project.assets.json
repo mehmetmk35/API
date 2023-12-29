@@ -4199,25 +4199,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\admin\\.nuget\\packages\\": {},
+    "C:\\Users\\s4in\\.nuget\\packages\\": {},
     "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Presentation\\GulYapanAPI.API\\GulYapanAPI.API.csproj",
+      "projectUniqueName": "D:\\s4inProjeler\\GULYAPAN\\API\\Presentation\\GulYapanAPI.API\\GulYapanAPI.API.csproj",
       "projectName": "GulYapanAPI.API",
-      "projectPath": "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Presentation\\GulYapanAPI.API\\GulYapanAPI.API.csproj",
-      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Presentation\\GulYapanAPI.API\\obj\\",
+      "projectPath": "D:\\s4inProjeler\\GULYAPAN\\API\\Presentation\\GulYapanAPI.API\\GulYapanAPI.API.csproj",
+      "packagesPath": "C:\\Users\\s4in\\.nuget\\packages\\",
+      "outputPath": "D:\\s4inProjeler\\GULYAPAN\\API\\Presentation\\GulYapanAPI.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\s4in\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -4228,21 +4228,21 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\DevExpress 23.1\\Components\\System\\Components\\Packages": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Core\\GulYapanAPI.Application\\GulYapanAPI.Application.csproj": {
-              "projectPath": "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Core\\GulYapanAPI.Application\\GulYapanAPI.Application.csproj"
+            "D:\\s4inProjeler\\GULYAPAN\\API\\Core\\GulYapanAPI.Application\\GulYapanAPI.Application.csproj": {
+              "projectPath": "D:\\s4inProjeler\\GULYAPAN\\API\\Core\\GulYapanAPI.Application\\GulYapanAPI.Application.csproj"
             },
-            "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Infrastructure\\GulYapanAPI.Infrastructure\\GulYapanAPI.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Infrastructure\\GulYapanAPI.Infrastructure\\GulYapanAPI.Infrastructure.csproj"
+            "D:\\s4inProjeler\\GULYAPAN\\API\\Infrastructure\\GulYapanAPI.Infrastructure\\GulYapanAPI.Infrastructure.csproj": {
+              "projectPath": "D:\\s4inProjeler\\GULYAPAN\\API\\Infrastructure\\GulYapanAPI.Infrastructure\\GulYapanAPI.Infrastructure.csproj"
             },
-            "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Infrastructure\\GulYapanAPI.Persistence\\GulYapanAPI.Persistence.csproj": {
-              "projectPath": "C:\\Users\\admin\\Desktop\\proje\\GulYapanAPI\\Infrastructure\\GulYapanAPI.Persistence\\GulYapanAPI.Persistence.csproj"
+            "D:\\s4inProjeler\\GULYAPAN\\API\\Infrastructure\\GulYapanAPI.Persistence\\GulYapanAPI.Persistence.csproj": {
+              "projectPath": "D:\\s4inProjeler\\GULYAPAN\\API\\Infrastructure\\GulYapanAPI.Persistence\\GulYapanAPI.Persistence.csproj"
             }
           }
         }
@@ -4287,7 +4287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
