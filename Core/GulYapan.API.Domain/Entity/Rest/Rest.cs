@@ -21,6 +21,7 @@ namespace GulYapan.API.Domain.Entity.Rest
             public string Aciklama { get; set; }
             public int Tip { get; set; }
             public string KOD1 { get; set; }
+            public string KOD2 { get; set; }
             public double GEN_ISK1O { get; set; }
             public int TIPI { get; set; }
             public bool KDV_DAHILMI { get; set; }
@@ -32,7 +33,7 @@ namespace GulYapan.API.Domain.Entity.Rest
             public int Sube_Kodu { get; set; }
             public string Bform { get; set; }
             public string EKACK11 { get; set; }
-            public bool EfaturaCarisiMi { get; set; }
+            public bool EfaturaCarisiMi { get; set; } = true;
 
         }
         public class FatKalem
@@ -70,10 +71,12 @@ namespace GulYapan.API.Domain.Entity.Rest
         public class Fatura
         {
             public string Seri { get; set; }
+            public string GIB_FATIRS_NO { get; set; }
             public bool KayitliNumaraOtomatikGuncellensin { get; set; }
             public FaturaUst FatUst { get; set; }
             public bool EPostaGonderilsin { get; set; }
             public List<FatKalem> Kalems { get; set; }
+            
 
         }
 

@@ -7,7 +7,7 @@
             get
             {
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+              
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Seriler")["EFAT"];
             }
@@ -17,10 +17,11 @@
             get
             {
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+               
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Seriler")["EARV"];
             }
         }
+         
     }
 }

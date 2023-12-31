@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GulYapanAPI.Persistence.Contexts
 {
-    public class GulYapansqlAPIDbContext : DbContext
+    public sealed class GulYapansqlAPIDbContext : DbContext
     {
         public GulYapansqlAPIDbContext()
         {
@@ -18,7 +18,7 @@ namespace GulYapanAPI.Persistence.Contexts
         public GulYapansqlAPIDbContext(DbContextOptions<GulYapansqlAPIDbContext> options) : base(options)
         {
         }
-        public virtual DbSet<TBLFATUIRS> TBLFATUIRSS { get; set; }
+        public  DbSet<TBLFATUIRS> TBLFATUIRSS { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

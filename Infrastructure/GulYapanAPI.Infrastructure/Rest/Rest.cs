@@ -1,5 +1,6 @@
 ﻿using GulYapan.API.Domain.Entity.Response;
 using GulYapan.API.Domain.Entity.Rest;
+using GulYapan.API.Domain.Entity.Rest.FaturaResponse;
 using GulYapanAPI.Application.Rest;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -67,44 +68,34 @@ namespace GulYapanAPI.Infrastructure
             }
             return tokenModel;
         }
-        public string jsonParse(string value)
+        
+        
+        
+        public async Task<Response<string>> CreateRestInvoice(string Customer_Code,string InvoiceNumber,bool EInvoiceRecipient,DateTime CreateDate,string KdvsizTutar,string Token)
         {
-            string val = "False";
-            try
-            {
-                JObject json = JObject.Parse(value);
-                val = json["IsSuccessful"].ToString();
-            }
-            catch (Exception)
-            {
-                val = "False";
-            }
-            return val;
-        }
-        public   async Task<Response<string>> CreateRestInvoice(string Customer_Code,string InvoiceNumber,bool EInvoiceRecipient,DateTime CreateDate,string KdvsizTutar,string Token)
-        {
-            Response<string> response = new();
-            try
-            {
-                
+                Response<string> response = new();
                 response.Message = "false";
                 response.Success = false;
                 HttpResponseMessage responseMessage;
                 Fatura fatura = new Fatura();
                 fatura.FatUst = new FaturaUst();
+                 //fatura.FatUst.CariKod = "070050";
                 fatura.FatUst.CariKod = Customer_Code;
                 fatura.FatUst.EfaturaCarisiMi = EInvoiceRecipient;
                 fatura.FatUst.FATIRS_NO = InvoiceNumber;
                 fatura.FatUst.Tarih = CreateDate;
                 fatura.FatUst.Tip = 0;
                 fatura.FatUst.TIPI = 2;
-                
+                fatura.FatUst.KOD1 = "3"; //TEST
+                fatura.FatUst.KOD2 = "A"; //TEST
+             
                 fatura.Kalems = new List<FatKalem>();
 
                 FatKalem fatkalem = new FatKalem();
-                fatkalem.StokKodu = "HIZ20";
+                fatkalem.StokKodu = Configuration.Stok_Kodu;
                 fatkalem.STra_ACIK = Customer_Code;
-                fatkalem.STra_CARI_KOD = Customer_Code;
+              
+                //fatkalem.STra_CARI_KOD = Customer_Code;
                 fatkalem.STra_GCMIK = 1;
                 fatkalem.STra_NF = KdvsizTutar.Replace(',', '.');
                 fatkalem.STra_BF = KdvsizTutar.Replace(',', '.');
@@ -133,28 +124,13 @@ namespace GulYapanAPI.Infrastructure
                      responseMessage = client.PostAsync(client.BaseAddress.AbsoluteUri, content).Result;
                 }
                 var result = responseMessage.Content.ReadAsStringAsync().Result;
-                Fatura fat = JsonConvert.DeserializeObject<Fatura>(result);
+                var response1 = JsonConvert.DeserializeObject<FaturaResponse>(result);                 
+                //var GIB_FATIRS_NO = response1?.Data?.FatUst?.GIB_FATIRS_NO;
+                String value = response1?.IsSuccessful;
                 responseMessage.Dispose();
-                String value = jsonParse(result);
+                 
                 if (Convert.ToBoolean(value))
-                {
-                    var _InvoiceNumber = InvoiceNumber;
-                    try
-                    {
-
-                        var gib = result.Split(',');
-                        foreach (var item in gib)
-                        {
-                            if (item.IndexOf("GIB_FATIRS_NO") > -1)
-                            {
-                                var gib1 = item.ToString().Split('"');
-                                _InvoiceNumber = gib1[3];
-                                break;
-                            }
-                        }
-                    }
-                    catch
-                    { }
+                {                                       
                     response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ BAŞARILIDIR. NO: " + InvoiceNumber;
                     response.Success = true;
                     response.Data = InvoiceNumber;
@@ -162,19 +138,12 @@ namespace GulYapanAPI.Infrastructure
                 else
                 {
                     response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ HATA. NO: " + InvoiceNumber;
-                    response.Success = true;
-                    response.Data = InvoiceNumber;
+                    response.Success = false;
+                    response.Data = result;
                 }
-            }
-            catch (Exception ex)
-            {
+                         
 
-                // Boolean log = LogKaydet("", "REST SATIŞ FATURA NETSİSE İŞLEME", ex.Message + " " + ex.StackTrace, "", "", "HATA", 0);
-                response.Message=ex.Message;
-                response.Success = false;
-            }
-
-            return  response;
+                return  response;
         }
     }
 }

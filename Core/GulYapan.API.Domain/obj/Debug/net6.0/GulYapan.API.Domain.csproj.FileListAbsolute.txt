@@ -34,3 +34,15 @@ D:\s4inProjeler\GULYAPAN\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.
 D:\s4inProjeler\GULYAPAN\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\refint\GulYapan.API.Domain.dll
 D:\s4inProjeler\GULYAPAN\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.pdb
 D:\s4inProjeler\GULYAPAN\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\ref\GulYapan.API.Domain.dll
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\bin\Debug\net6.0\GulYapan.API.Domain.deps.json
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\bin\Debug\net6.0\GulYapan.API.Domain.dll
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\bin\Debug\net6.0\GulYapan.API.Domain.pdb
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.AssemblyInfo.cs
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.dll
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\refint\GulYapan.API.Domain.dll
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\GulYapan.API.Domain.pdb
+C:\Users\admin\Desktop\proje\API\Core\GulYapan.API.Domain\obj\Debug\net6.0\ref\GulYapan.API.Domain.dll

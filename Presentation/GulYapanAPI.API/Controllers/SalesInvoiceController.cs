@@ -2,40 +2,43 @@
 using GulYapan.API.Domain.Entity.Response;
 using GulYapan.API.Domain.Entity.Rest;
 using GulYapanAPI.Application.Repositorys;
+using GulYapanAPI.Application.Repositorys.ILogger; 
 using GulYapanAPI.Application.Repositorys.Payment;
-using GulYapanAPI.Application.Rest;
-using GulYapanAPI.Persistence.Contexts;
-using Microsoft.AspNetCore.Http;
+using GulYapanAPI.Application.Rest; 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
-using System.Linq.Expressions;
+ 
 
 namespace GulYapanAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   
     public class SalesInvoiceController : ControllerBase
     {
         private readonly ITBLFATUIRSReadRepository _TestReadRepository;     
         private readonly IRest _Rest;
         private readonly IPayment_TraWriteRepositorycs _PaymentTraWriteRepository;
-        private ITBLEFATCARISReadRepository _TBLEFATCARISReadRepository;
-        private ISellers_sellersWriteepository _SellersWriteepository;
+        private readonly ITBLEFATCARISReadRepository _TBLEFATCARISReadRepository;
+        private readonly ISellers_sellersWriteepository _SellersWriteepository;
+        private readonly ILog _Ilog;
 
-        public SalesInvoiceController(ITBLFATUIRSReadRepository testReadRepository, IRest rest, IPayment_TraWriteRepositorycs paymentTraWriteRepository, ITBLEFATCARISReadRepository tBLEFATCARISReadRepository, ISellers_sellersWriteepository sellersWriteepository)
+        public SalesInvoiceController(ILog log, ITBLFATUIRSReadRepository testReadRepository, IRest rest, IPayment_TraWriteRepositorycs paymentTraWriteRepository, ITBLEFATCARISReadRepository tBLEFATCARISReadRepository, ISellers_sellersWriteepository sellersWriteepository)
         {
             _TestReadRepository = testReadRepository;
             _Rest = rest;
             _PaymentTraWriteRepository = paymentTraWriteRepository;
             _TBLEFATCARISReadRepository = tBLEFATCARISReadRepository;
             _SellersWriteepository = sellersWriteepository;
+            _Ilog = log;
+             
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> CreateRestInvoice()
         {
+            var a = 0;
+            var b = 5/a;
+           
             List<payment_transactions> payment_Transactions = await _PaymentTraWriteRepository.GetFilteredTransactions();
 
             if (payment_Transactions.Count>0)
@@ -50,14 +53,49 @@ namespace GulYapanAPI.API.Controllers
                         TokenDto tokenDto = await _Rest.GetToken();
                         if (tokenDto.status)
                         {
+
                             Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, "10", tokenDto.token);
+                            if (!response.Success)
+                            {
+                                
+                                _Ilog.TextLog(response.Data);                                                                  
+                                _Ilog.TextLog(response.Message);
+                                 
+                                transaction.SyncStatus = "complete";
+                                transaction.InvoiceSyncStatus = "complete";
+                                transaction.ConfirmStatus = "complete";
+                                _PaymentTraWriteRepository.Update(transaction);
+                                 await _PaymentTraWriteRepository.SaveAsync();
+
+
+                            }
+                            else
+                            {
+                                _Ilog.TextLog(response.Message);
+                              
+                            }
                         }
                         
                     }
                     else
                     {
                         var InvoiceNumber = await _TestReadRepository.GetLastInvoiceNumberAsync(x => x.FatirsNo.StartsWith(Configuration.EARV));
-                        var rst = await _Rest.GetToken();
+                        var tokenDto = await _Rest.GetToken();
+                        if (tokenDto.status)
+                        {
+
+                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, "10", tokenDto.token);
+                            if (!response.Success)
+                            {
+                               
+                                _Ilog.TextLog(response.Data);                                                                  
+                                _Ilog.TextLog(response.Message);                                                                  
+                            }
+                            else
+                            {
+                                _Ilog.TextLog(response.Message);
+                            }
+                        }
                     }
                 }
 

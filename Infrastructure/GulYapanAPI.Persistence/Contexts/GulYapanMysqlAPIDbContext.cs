@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GulYapanAPI.Persistence.Contexts
 {
-    public class GulYapanMysqlAPIDbContext : DbContext
+    public sealed class GulYapanMysqlAPIDbContext : DbContext
     {
         public GulYapanMysqlAPIDbContext()
         {

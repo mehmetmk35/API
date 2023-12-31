@@ -130,6 +130,26 @@ namespace GulYapanAPI.Infrastructure
                 return  configurationManager?.GetSection("Installment")["MuhasebeKodu"];
             }
         }
+        static public string Stok_Kodu
+        {
+            get
+            {
+                ConfigurationManager configurationManager = new();
+                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.AddJsonFile("appsettings.json");
+                return configurationManager?.GetSection("Installment")["Stok_Kodu"];
+            }
+        } 
+        static public string Log_Path
+        {
+            get
+            {
+                ConfigurationManager configurationManager = new();
+                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.AddJsonFile("appsettings.json");
+                return configurationManager?.GetSection("Log")["Path"];
+            }
+        }
 
     }
 }

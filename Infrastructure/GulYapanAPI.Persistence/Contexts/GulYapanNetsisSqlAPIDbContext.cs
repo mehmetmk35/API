@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GulYapanAPI.Persistence.Contexts
 {
-    public class GulYapanNetsisSqlAPIDbContext:DbContext
+    public  sealed class GulYapanNetsisSqlAPIDbContext:DbContext
     {
         public GulYapanNetsisSqlAPIDbContext()
         {
