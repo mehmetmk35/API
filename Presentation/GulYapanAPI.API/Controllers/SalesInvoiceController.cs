@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GulYapanAPI.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
    
     public class SalesInvoiceController : ControllerBase
     {
@@ -36,8 +36,7 @@ namespace GulYapanAPI.API.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateRestInvoice()
         {
-            var a = 0;
-            var b = 5/a;
+             
            
             List<payment_transactions> payment_Transactions = await _PaymentTraWriteRepository.GetFilteredTransactions();
 
@@ -47,32 +46,41 @@ namespace GulYapanAPI.API.Controllers
                 {
                    sellers_sellers Customer = await _SellersWriteepository.GetSellers(x => x.id == transaction.Seller_id);
                     Boolean control = await _TBLEFATCARISReadRepository.EInvoiceRecipient(x => x.IDENTIFIER == Customer.TaxNo);
+                    decimal Price = transaction.TotalPrice * (transaction.InstallmentRate / 100);
                     if (control)
                     {
+                        var asd = Configuration.EFAT;
                         var InvoiceNumber = await _TestReadRepository.GetLastInvoiceNumberAsync(x => x.FatirsNo.StartsWith(Configuration.EFAT));
                         TokenDto tokenDto = await _Rest.GetToken();
                         if (tokenDto.status)
                         {
 
-                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, "10", tokenDto.token);
+                            
+                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, Price, tokenDto.token);
                             if (!response.Success)
                             {
                                 
                                 _Ilog.TextLog(response.Data);                                                                  
                                 _Ilog.TextLog(response.Message);
-                                 
-                                transaction.SyncStatus = "complete";
-                                transaction.InvoiceSyncStatus = "complete";
-                                transaction.ConfirmStatus = "complete";
+
+                                
+                                transaction.InvoiceSyncStatus = "error";
+                                transaction.InvoiceERPCode = "";
+                                transaction.InvoiceGibERPCode = "";
                                 _PaymentTraWriteRepository.Update(transaction);
-                                 await _PaymentTraWriteRepository.SaveAsync();
+                                await _PaymentTraWriteRepository.SaveAsync();
 
 
                             }
                             else
                             {
                                 _Ilog.TextLog(response.Message);
-                              
+                                transaction.InvoiceSyncStatus = "complete";
+                                transaction.InvoiceERPCode = InvoiceNumber;
+                                transaction.InvoiceGibERPCode = response.Data;
+                                _PaymentTraWriteRepository.Update(transaction);
+                                await _PaymentTraWriteRepository.SaveAsync();
+
                             }
                         }
                         
@@ -84,16 +92,22 @@ namespace GulYapanAPI.API.Controllers
                         if (tokenDto.status)
                         {
 
-                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, "10", tokenDto.token);
+                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, Price, tokenDto.token);
                             if (!response.Success)
                             {
                                
                                 _Ilog.TextLog(response.Data);                                                                  
-                                _Ilog.TextLog(response.Message);                                                                  
+                                _Ilog.TextLog(response.Message);
+                                transaction.InvoiceSyncStatus = "error";
+                                transaction.InvoiceERPCode = "";
+                                transaction.InvoiceGibERPCode = "";
                             }
                             else
                             {
                                 _Ilog.TextLog(response.Message);
+                                transaction.InvoiceSyncStatus = "complete";
+                                transaction.InvoiceERPCode = InvoiceNumber;
+                                transaction.InvoiceGibERPCode = response.Data;
                             }
                         }
                     }

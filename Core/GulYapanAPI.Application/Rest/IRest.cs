@@ -12,6 +12,6 @@ namespace GulYapanAPI.Application.Rest
     public interface IRest
     {
        Task<TokenDto> GetToken();
-        Task<Response<string>> CreateRestInvoice(string Customer_Code, string InvoiceNumber, bool EInvoiceRecipient, DateTime CreateDate, string KdvsizTutar, string Token);
+        Task<Response<string>> CreateRestInvoice(string Customer_Code, string InvoiceNumber, bool EInvoiceRecipient, DateTime CreateDate, decimal KdvsizTutar, string Token);
     }
 }

@@ -11,6 +11,7 @@ namespace GulYapan.API.Domain.Entity.MySql
         public int Id { get; set; }
         public string? OrderCode { get; set; }
         public string? ERPCode { get; set; }
+        public string? InvoiceGibERPCode { get; set; }
         public short Installment { get; set; }
         public decimal InstallmentRate { get; set; }
         public decimal TotalPrice { get; set; }

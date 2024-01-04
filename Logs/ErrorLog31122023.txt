@@ -1,4 +1,0 @@
-﻿31:12.2023 14:59: 34 ---Attempted to divide by zero.--   at GulYapanAPI.API.Controllers.SalesInvoiceController.CreateRestInvoice() in C:\Users\admin\Desktop\proje\API\Presentation\GulYapanAPI.API\Controllers\SalesInvoiceController.cs:
-31:12.2023 14:59: 36 ---Attempted to divide by zero.--   at GulYapanAPI.API.Controllers.SalesInvoiceController.CreateRestInvoice() in C:\Users\admin\Desktop\proje\API\Presentation\GulYapanAPI.API\Controllers\SalesInvoiceController.cs:
-31:12.2023 14:59: 39 ---Attempted to divide by zero.--   at GulYapanAPI.API.Controllers.SalesInvoiceController.CreateRestInvoice() in C:\Users\admin\Desktop\proje\API\Presentation\GulYapanAPI.API\Controllers\SalesInvoiceController.cs:
-31:12.2023 15:00: 09 ---Attempted to divide by zero.--   at GulYapanAPI.API.Controllers.SalesInvoiceController.CreateRestInvoice() in C:\Users\admin\Desktop\proje\API\Presentation\GulYapanAPI.API\Controllers\SalesInvoiceController.cs:

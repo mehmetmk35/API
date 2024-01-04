@@ -150,6 +150,26 @@ namespace GulYapanAPI.Infrastructure
                 return configurationManager?.GetSection("Log")["Path"];
             }
         }
+        static public string OzelKod1
+        {
+            get
+            {
+                ConfigurationManager configurationManager = new();
+                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.AddJsonFile("appsettings.json");
+                return configurationManager?.GetSection("Installment")["OzelKod1"];
+            }
+        }
+        static public string OzelKod2
+        {
+            get
+            {
+                ConfigurationManager configurationManager = new();
+                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.AddJsonFile("appsettings.json");
+                return configurationManager?.GetSection("Installment")["OzelKod2"];
+            }
+        }
 
     }
 }

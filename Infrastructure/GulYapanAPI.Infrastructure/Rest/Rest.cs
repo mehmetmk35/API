@@ -71,7 +71,7 @@ namespace GulYapanAPI.Infrastructure
         
         
         
-        public async Task<Response<string>> CreateRestInvoice(string Customer_Code,string InvoiceNumber,bool EInvoiceRecipient,DateTime CreateDate,string KdvsizTutar,string Token)
+        public async Task<Response<string>> CreateRestInvoice(string Customer_Code,string InvoiceNumber,bool EInvoiceRecipient,DateTime CreateDate,decimal KdvsizTutar,string Token)
         {
                 Response<string> response = new();
                 response.Message = "false";
@@ -86,19 +86,19 @@ namespace GulYapanAPI.Infrastructure
                 fatura.FatUst.Tarih = CreateDate;
                 fatura.FatUst.Tip = 0;
                 fatura.FatUst.TIPI = 2;
-                fatura.FatUst.KOD1 = "3"; //TEST
-                fatura.FatUst.KOD2 = "A"; //TEST
+                fatura.FatUst.KOD1 = Configuration.OzelKod1;
+                fatura.FatUst.KOD2 = Configuration.OzelKod2;
              
                 fatura.Kalems = new List<FatKalem>();
 
                 FatKalem fatkalem = new FatKalem();
                 fatkalem.StokKodu = Configuration.Stok_Kodu;
                 fatkalem.STra_ACIK = Customer_Code;
-              
-                //fatkalem.STra_CARI_KOD = Customer_Code;
+
+                fatkalem.STra_CARI_KOD = Customer_Code;
                 fatkalem.STra_GCMIK = 1;
-                fatkalem.STra_NF = KdvsizTutar.Replace(',', '.');
-                fatkalem.STra_BF = KdvsizTutar.Replace(',', '.');
+                fatkalem.STra_BF = KdvsizTutar.ToString().Replace(',', '.');
+                fatkalem.STra_NF = KdvsizTutar.ToString().Replace(',', '.');
 
                 fatkalem.STra_KDV = Configuration.kdv;
 
@@ -125,7 +125,7 @@ namespace GulYapanAPI.Infrastructure
                 }
                 var result = responseMessage.Content.ReadAsStringAsync().Result;
                 var response1 = JsonConvert.DeserializeObject<FaturaResponse>(result);                 
-                //var GIB_FATIRS_NO = response1?.Data?.FatUst?.GIB_FATIRS_NO;
+                var GIB_FATIRS_NO = response1?.Data?.FatUst?.GIB_FATIRS_NO;
                 String value = response1?.IsSuccessful;
                 responseMessage.Dispose();
                  
@@ -133,7 +133,7 @@ namespace GulYapanAPI.Infrastructure
                 {                                       
                     response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ BAŞARILIDIR. NO: " + InvoiceNumber;
                     response.Success = true;
-                    response.Data = InvoiceNumber;
+                    response.Data = GIB_FATIRS_NO;
                 }
                 else
                 {
