@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="S4IN-API" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="TEST" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\s4inProjeler\\GULYAPAN\\API\\Presentation\\GulYapanAPI\.API\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

@@ -27,7 +27,7 @@ namespace GulYapanAPI.Persistence.Respositories
             return true;
         }
 
-        public async Task<string> GetLastInvoiceNumberAsync(Expression<Func<TBLFATUIRS, bool>> metod, bool tracking = true)
+        public async Task<string> GetLastInvoiceNumberAsync(Expression<Func<TBLFATUIRS, bool>> metod, string invoiceseries, bool tracking = true )
         {
             var invoiceNum=string.Empty;
             try
@@ -65,7 +65,8 @@ namespace GulYapanAPI.Persistence.Respositories
                 }
                 else
                 {
-                    invoiceNum = "AAA";
+
+                    invoiceNum = invoiceseries;
                     invoiceNum = invoiceNum.PadRight(14, '0') + "1";
                 }
             }

@@ -44,75 +44,98 @@ namespace GulYapanAPI.API.Controllers
             {
                 foreach (var transaction in payment_Transactions)
                 {
-                   sellers_sellers Customer = await _SellersWriteepository.GetSellers(x => x.id == transaction.Seller_id);
-                    Boolean control = await _TBLEFATCARISReadRepository.EInvoiceRecipient(x => x.IDENTIFIER == Customer.TaxNo);
-                    decimal Price = transaction.TotalPrice * (transaction.InstallmentRate / 100);
-                    if (control)
+                    if (transaction.Seller_id==null || transaction.Current_id==null)
                     {
-                        var asd = Configuration.EFAT;
-                        var InvoiceNumber = await _TestReadRepository.GetLastInvoiceNumberAsync(x => x.FatirsNo.StartsWith(Configuration.EFAT));
-                        TokenDto tokenDto = await _Rest.GetToken();
-                        if (tokenDto.status)
-                        {
-
-                            
-                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, Price, tokenDto.token);
-                            if (!response.Success)
-                            {
-                                
-                                _Ilog.TextLog(response.Data);                                                                  
-                                _Ilog.TextLog(response.Message);
-
-                                
-                                transaction.InvoiceSyncStatus = "error";
-                                transaction.InvoiceERPCode = "";
-                                transaction.InvoiceGibERPCode = "";
-                                _PaymentTraWriteRepository.Update(transaction);
-                                await _PaymentTraWriteRepository.SaveAsync();
-
-
-                            }
-                            else
-                            {
-                                _Ilog.TextLog(response.Message);
-                                transaction.InvoiceSyncStatus = "complete";
-                                transaction.InvoiceERPCode = InvoiceNumber;
-                                transaction.InvoiceGibERPCode = response.Data;
-                                _PaymentTraWriteRepository.Update(transaction);
-                                await _PaymentTraWriteRepository.SaveAsync();
-
-                            }
-                        }
+                        transaction.InvoiceSyncStatus = "error";
+                        transaction.InvoiceERPCode = "";
+                        transaction.InvoiceGibERPCode = "seller_id_null";
+                        _PaymentTraWriteRepository.Update(transaction);
+                        await _PaymentTraWriteRepository.SaveAsync();
+                        _Ilog.TextLog("hta");
+                         
                         
                     }
                     else
                     {
-                        var InvoiceNumber = await _TestReadRepository.GetLastInvoiceNumberAsync(x => x.FatirsNo.StartsWith(Configuration.EARV));
-                        var tokenDto = await _Rest.GetToken();
-                        if (tokenDto.status)
+                        sellers_sellers Customer = await _SellersWriteepository.GetSellers(x => x.id == transaction.Seller_id);
+                        Boolean control = await _TBLEFATCARISReadRepository.EInvoiceRecipient(x => x.IDENTIFIER == Customer.TaxNo && x.AKTIF=="E");
+                        decimal Price = transaction.TotalPrice * (transaction.InstallmentRate / 100);
+                        if (control)
                         {
+                            var asd = Configuration.EFAT;
+                            var InvoiceNumber = await _TestReadRepository.GetLastInvoiceNumberAsync(x => x.FatirsNo.StartsWith(Configuration.EFAT),invoiceseries:Configuration.EFAT);
+                            TokenDto tokenDto = await _Rest.GetToken();
+                            if (tokenDto.status)
+                            {
 
-                            Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, Customer.CreateDate, Price, tokenDto.token);
-                            if (!response.Success)
-                            {
-                               
-                                _Ilog.TextLog(response.Data);                                                                  
-                                _Ilog.TextLog(response.Message);
-                                transaction.InvoiceSyncStatus = "error";
-                                transaction.InvoiceERPCode = "";
-                                transaction.InvoiceGibERPCode = "";
+
+                                Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, transaction.CreateDate, Price, tokenDto.token);
+                                if (!response.Success)
+                                {
+
+                                    _Ilog.TextLog(response.Data);
+                                    _Ilog.TextLog(response.Message);
+
+
+                                    transaction.InvoiceSyncStatus = "error";
+                                    transaction.InvoiceERPCode = "";
+                                    transaction.InvoiceGibERPCode = "";
+                                    _PaymentTraWriteRepository.Update(transaction);
+                                    await _PaymentTraWriteRepository.SaveAsync();
+
+
+                                }
+                                else
+                                {
+                                    _Ilog.TextLog(response.Message);
+                                    transaction.InvoiceSyncStatus = "complete";
+                                    transaction.InvoiceERPCode = InvoiceNumber;
+                                    transaction.InvoiceGibERPCode = response.Data;
+                                    _PaymentTraWriteRepository.Update(transaction);
+                                    await _PaymentTraWriteRepository.SaveAsync();
+
+                                }
                             }
-                            else
+
+                        }
+                        else
+                        {
+                            var InvoiceNumber = await _TestReadRepository.GetLastInvoiceNumberAsync(x => x.FatirsNo.StartsWith(Configuration.EARV), invoiceseries: Configuration.EARV);
+                            var tokenDto = await _Rest.GetToken();
+                            if (tokenDto.status)
                             {
-                                _Ilog.TextLog(response.Message);
-                                transaction.InvoiceSyncStatus = "complete";
-                                transaction.InvoiceERPCode = InvoiceNumber;
-                                transaction.InvoiceGibERPCode = response.Data;
+
+                                Response<string> response = await _Rest.CreateRestInvoice(Customer.Code, InvoiceNumber, control, transaction.CreateDate, Price, tokenDto.token);
+                                if (!response.Success)
+                                {
+
+                                    _Ilog.TextLog(response.Data);
+                                    _Ilog.TextLog(response.Message);
+                                    transaction.InvoiceSyncStatus = "error";
+                                    transaction.InvoiceERPCode = "";
+                                    transaction.InvoiceGibERPCode = "";
+                                    _PaymentTraWriteRepository.Update(transaction);
+                                    await _PaymentTraWriteRepository.SaveAsync();
+                                }
+                                else
+                                {
+                                    _Ilog.TextLog(response.Message);
+                                    transaction.InvoiceSyncStatus = "complete";
+                                    transaction.InvoiceERPCode = InvoiceNumber;
+                                    transaction.InvoiceGibERPCode = response.Data;
+                                    _PaymentTraWriteRepository.Update(transaction);
+                                    await _PaymentTraWriteRepository.SaveAsync();
+                                }
                             }
                         }
                     }
+                   
                 }
 
+            }
+            else
+            {
+                _Ilog.TextLog("kayıt yok");
             }
             return Ok();
         }

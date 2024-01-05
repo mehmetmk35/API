@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>D:\s4inProjeler\GULYAPAN\GULAPI</_PublishTargetUrl>
-    <History>True|2024-01-04T15:22:14.4267388Z;True|2024-01-04T17:07:37.6725542+03:00;True|2024-01-04T16:45:13.9572131+03:00;False|2024-01-04T16:42:21.0367989+03:00;True|2024-01-04T14:42:10.6885611+03:00;</History>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\GULAPI</_PublishTargetUrl>
+    <History>True|2024-01-05T15:01:10.8585868Z;True|2024-01-05T17:52:09.3577507+03:00;True|2024-01-05T16:57:30.5872470+03:00;False|2024-01-05T16:54:39.1455975+03:00;False|2024-01-05T16:52:33.4546926+03:00;False|2024-01-05T16:50:05.3787189+03:00;True|2024-01-05T16:44:27.9895021+03:00;True|2024-01-05T15:11:15.3018491+03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

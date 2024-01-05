@@ -18,6 +18,7 @@ namespace GulYapanAPI.Persistence.Respositories
 
         public async Task<bool> EInvoiceRecipient(Expression<Func<TBLEFATCARI, bool>> metod)
         {
+
             var query = Table.AsQueryable();
             return await Task.Run(() => query.Where(metod).Any());
 

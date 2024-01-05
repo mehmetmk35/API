@@ -10,7 +10,7 @@ namespace GulYapanAPI.Application.Repositorys
 {
     public interface ITBLFATUIRSReadRepository:IReadRepository<TBLFATUIRS> 
     {
-        Task<string> GetLastInvoiceNumberAsync(Expression<Func<TBLFATUIRS, bool>> metod, bool tracking = true);
+        Task<string> GetLastInvoiceNumberAsync(Expression<Func<TBLFATUIRS, bool>> metod, string invoiceseries,bool tracking = true);
         
     }
 }

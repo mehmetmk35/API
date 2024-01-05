@@ -14,8 +14,12 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path); ;
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["RestUrl"];
             }
@@ -24,8 +28,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["grant_type"];
             }
@@ -34,8 +41,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["branchcode"];
             }
@@ -44,8 +54,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["password"];
             }
@@ -54,8 +67,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["username"];
             }
@@ -64,8 +80,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["dbname"];
             }
@@ -74,8 +93,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["dbuser"];
             }
@@ -84,8 +106,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["dbpassword"];
             }
@@ -94,8 +119,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Rest")["dbtype"];
             }
@@ -104,8 +132,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return Convert.ToInt32(configurationManager?.GetSection("Installment")["KDV"]);
             }
@@ -114,8 +145,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return Convert.ToInt32(configurationManager?.GetSection("Installment")["depo"]);
             }
@@ -124,8 +158,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return  configurationManager?.GetSection("Installment")["MuhasebeKodu"];
             }
@@ -134,8 +171,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Installment")["Stok_Kodu"];
             }
@@ -144,8 +184,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Log")["Path"];
             }
@@ -154,8 +197,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Installment")["OzelKod1"];
             }
@@ -164,8 +210,11 @@ namespace GulYapanAPI.Infrastructure
         {
             get
             {
+                var path = Environment.CurrentDirectory;
+
                 ConfigurationManager configurationManager = new();
-                configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                //configurationManager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/GulYapanAPI.API"));
+                configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
                 return configurationManager?.GetSection("Installment")["OzelKod2"];
             }
