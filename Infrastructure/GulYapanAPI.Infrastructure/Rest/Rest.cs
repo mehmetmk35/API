@@ -68,82 +68,102 @@ namespace GulYapanAPI.Infrastructure
             }
             return tokenModel;
         }
-        
-        
-        
+
+        public void revokeToken(string token)
+        {
+            HttpResponseMessage response;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(new Uri(Configuration.Rest_RestUrl), "api/v2/revoke");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                response = client.GetAsync(client.BaseAddress.AbsoluteUri).Result;
+            }
+            var result = response.Content.ReadAsStringAsync().Result;
+            response.Dispose();
+        }
+
         public async Task<Response<string>> CreateRestInvoice(string Customer_Code,string InvoiceNumber,bool EInvoiceRecipient,DateTime CreateDate,decimal KdvsizTutar,string Token)
         {
-                Response<string> response = new();
-                response.Message = "false";
-                response.Success = false;
-                HttpResponseMessage responseMessage;
-                Fatura fatura = new Fatura();
-                fatura.FatUst = new FaturaUst();
-                 //fatura.FatUst.CariKod = "070050";
-                fatura.FatUst.CariKod = Customer_Code;
-                fatura.FatUst.EfaturaCarisiMi = EInvoiceRecipient;
-                fatura.FatUst.FATIRS_NO = InvoiceNumber;
-                fatura.FatUst.Tarih = CreateDate;
-                fatura.FatUst.Tip = 0;
-                fatura.FatUst.TIPI = 2;
-                fatura.FatUst.KOD1 = Configuration.OzelKod1;
-                fatura.FatUst.KOD2 = Configuration.OzelKod2;
+            Response<string> response = new();
+            try
+            {
+
+           
+            
+            response.Message = "false";
+            response.Success = false;
+            HttpResponseMessage responseMessage;
+            Fatura fatura = new Fatura();
+            fatura.FatUst = new FaturaUst();
+            fatura.FatUst.CariKod = Customer_Code;
+            fatura.FatUst.EfaturaCarisiMi = EInvoiceRecipient;
+            fatura.FatUst.FATIRS_NO = InvoiceNumber;
+            fatura.FatUst.Tarih = CreateDate;
+            fatura.FatUst.Tip = 0;
+            fatura.FatUst.TIPI = 2;
+            fatura.FatUst.KOD1 = Configuration.OzelKod1;
+            fatura.FatUst.KOD2 = Configuration.OzelKod2;
              
-                fatura.Kalems = new List<FatKalem>();
+            fatura.Kalems = new List<FatKalem>();
 
-                FatKalem fatkalem = new FatKalem();
-                fatkalem.StokKodu = Configuration.Stok_Kodu;
-                fatkalem.STra_ACIK = Customer_Code;
+            FatKalem fatkalem = new FatKalem();
+            fatkalem.StokKodu = Configuration.Stok_Kodu;           
+            fatkalem.STra_ACIK = Customer_Code;
+            fatkalem.STra_CARI_KOD = Customer_Code;
+            fatkalem.STra_GCMIK = 1;
+            fatkalem.STra_BF = KdvsizTutar.ToString().Replace(',', '.');
+            fatkalem.STra_NF = KdvsizTutar.ToString().Replace(',', '.');
 
-                fatkalem.STra_CARI_KOD = Customer_Code;
-                fatkalem.STra_GCMIK = 1;
-                fatkalem.STra_BF = KdvsizTutar.ToString().Replace(',', '.');
-                fatkalem.STra_NF = KdvsizTutar.ToString().Replace(',', '.');
+            fatkalem.STra_KDV = Configuration.kdv;
 
-                fatkalem.STra_KDV = Configuration.kdv;
-
-                fatkalem.DEPO_KODU = Configuration.w_code;
-                fatkalem.STra_FTIRSIP = "1";
-                fatkalem.STra_HTUR = "J";
-                fatkalem.STra_BGTIP = "F";
-                fatkalem.STra_GC = "C";
+            fatkalem.DEPO_KODU = Configuration.w_code;
+            fatkalem.STra_FTIRSIP = "1";
+            fatkalem.STra_HTUR = "J";
+            fatkalem.STra_BGTIP = "F";
+            fatkalem.STra_GC = "C";
                 
-                fatkalem.Sira = 1;
-                fatkalem.D_YEDEK10 = CreateDate;
-                fatkalem.MuhasebeKodu = Configuration.MuhasebeKodu;
-                fatkalem.Stra_OnayNum = 0;
-                fatkalem.Stra_OnayTipi = "A";
-                fatura.Kalems.Add(fatkalem);
-                var jsonval = JsonConvert.SerializeObject(fatura);
-                var content = new StringContent(jsonval, Encoding.UTF8, "application/json");
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(new Uri(Configuration.Rest_RestUrl), "api/v2/ItemSlips");
-                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token);
+            fatkalem.Sira = 1;
+            fatkalem.D_YEDEK10 = CreateDate;
+            fatkalem.MuhasebeKodu = Configuration.MuhasebeKodu;
+            fatkalem.Stra_OnayNum = 0;
+            fatkalem.Stra_OnayTipi = "A";
+            fatura.Kalems.Add(fatkalem);
+            var jsonval = JsonConvert.SerializeObject(fatura);
+            var content = new StringContent(jsonval, Encoding.UTF8, "application/json");
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(new Uri(Configuration.Rest_RestUrl), "api/v2/ItemSlips");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token);
 
-                     responseMessage = client.PostAsync(client.BaseAddress.AbsoluteUri, content).Result;
-                }
-                var result = responseMessage.Content.ReadAsStringAsync().Result;
-                var response1 = JsonConvert.DeserializeObject<FaturaResponse>(result);                 
-                var GIB_FATIRS_NO = response1?.Data?.FatUst?.GIB_FATIRS_NO;
-                String value = response1?.IsSuccessful;
-                responseMessage.Dispose();
+                    responseMessage = client.PostAsync(client.BaseAddress.AbsoluteUri, content).Result;
+            }
+            var result = responseMessage.Content.ReadAsStringAsync().Result;
+            var response1 = JsonConvert.DeserializeObject<FaturaResponse>(result);                 
+            var GIB_FATIRS_NO = response1?.Data?.FatUst?.GIB_FATIRS_NO;
+            String value = response1?.IsSuccessful;
+            responseMessage.Dispose();
                  
-                if (Convert.ToBoolean(value))
-                {                                       
-                    response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ BAŞARILIDIR. NO: " + InvoiceNumber;
-                    response.Success = true;
-                    response.Data = GIB_FATIRS_NO;
-                }
-                else
-                {
-                    response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ HATA. NO: " + InvoiceNumber;
-                    response.Success = false;
-                    response.Data = result;
-                }
-                         
+            if (Convert.ToBoolean(value))
+            {                                       
+                response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ BAŞARILIDIR. NO: " + InvoiceNumber;
+                response.Success = true;
+                response.Data = GIB_FATIRS_NO;
+            }
+            else
+            {
+                response.Message = "SATIŞ FATURA OLUŞTURMA İŞLEMİ HATA. NO: " + InvoiceNumber;
+                response.Success = false;
+                response.Data = result;
+            }
+            }
+            finally
+            {
+               revokeToken(Token);
+            }
 
-                return  response;
+            return  response;
         }
+
+        
     }
 }

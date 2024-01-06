@@ -411,3 +411,4 @@ D:\s4inProjeler\GULYAPAN\API\Presentation\GulYapanAPI.API\obj\Debug\net6.0\GulYa
 D:\s4inProjeler\GULYAPAN\API\Presentation\GulYapanAPI.API\obj\Debug\net6.0\GulYapanAPI.API.genruntimeconfig.cache
 D:\s4inProjeler\GULYAPAN\API\Presentation\GulYapanAPI.API\obj\Debug\net6.0\ref\GulYapanAPI.API.dll
 D:\s4inProjeler\GULYAPAN\API\Presentation\GulYapanAPI.API\obj\Debug\net6.0\GulYapanAPI.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\admin\Desktop\proje\API\Presentation\GulYapanAPI.API\obj\Debug\net6.0\GulYapanAPI.API.MvcApplicationPartsAssemblyInfo.cs

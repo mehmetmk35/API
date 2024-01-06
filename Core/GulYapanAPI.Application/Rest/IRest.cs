@@ -13,5 +13,6 @@ namespace GulYapanAPI.Application.Rest
     {
        Task<TokenDto> GetToken();
         Task<Response<string>> CreateRestInvoice(string Customer_Code, string InvoiceNumber, bool EInvoiceRecipient, DateTime CreateDate, decimal KdvsizTutar, string Token);
+         void revokeToken(string Token);
     }
 }

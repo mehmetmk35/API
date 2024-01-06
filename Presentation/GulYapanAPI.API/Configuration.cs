@@ -16,9 +16,8 @@
         {
             get
             {
-                ConfigurationManager configurationManager = new();
-               
-                configurationManager.AddJsonFile("appsettings.json");
+                ConfigurationManager configurationManager = new();               
+                configurationManager.AddJsonFile("appsettings.json");                
                 return configurationManager?.GetSection("Seriler")["EARV"];
             }
         }

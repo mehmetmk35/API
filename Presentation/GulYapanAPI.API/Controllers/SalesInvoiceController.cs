@@ -15,6 +15,7 @@ namespace GulYapanAPI.API.Controllers
    
     public class SalesInvoiceController : ControllerBase
     {
+        
         private readonly ITBLFATUIRSReadRepository _TestReadRepository;     
         private readonly IRest _Rest;
         private readonly IPayment_TraWriteRepositorycs _PaymentTraWriteRepository;
@@ -24,6 +25,7 @@ namespace GulYapanAPI.API.Controllers
 
         public SalesInvoiceController(ILog log, ITBLFATUIRSReadRepository testReadRepository, IRest rest, IPayment_TraWriteRepositorycs paymentTraWriteRepository, ITBLEFATCARISReadRepository tBLEFATCARISReadRepository, ISellers_sellersWriteepository sellersWriteepository)
         {
+            
             _TestReadRepository = testReadRepository;
             _Rest = rest;
             _PaymentTraWriteRepository = paymentTraWriteRepository;
@@ -137,7 +139,7 @@ namespace GulYapanAPI.API.Controllers
             {
                 _Ilog.TextLog("kayıt yok");
             }
-            return Ok();
+            return NoContent();
         }
     }
 }
